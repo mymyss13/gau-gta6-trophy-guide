@@ -3,23 +3,60 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GTA VI trophy checklist</title>
+<title>Leonida Legend — GTA VI Trophy Guide &amp; Tracker</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>GTA VI trophy checklist</h1>
-  <p id="progress">0 of 55 earned</p>
+<header class="masthead">
+  <div class="masthead-text">
+    <h1>Leonida Legend</h1>
+    <p class="subtitle">The GTA VI trophy guide &amp; tracker — all 55 PlayStation 5 trophies, with a cited guide for every one.</p>
+  </div>
+  <div class="progress-box">
+    <p id="progress-text" class="progress-text">0 of 55 earned</p>
+    <div class="progress-track"><div id="progress-bar" class="progress-bar"></div></div>
+    <p id="grade-tally" class="grade-tally"></p>
+  </div>
 </header>
-<div class="controls">
-  <label>Grade <select id="grade"><option value="all">All</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
-  <button id="export" type="button">Export progress</button>
-  <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
-</div>
-<table>
-  <thead><tr><th>Earned</th><th>Trophy</th><th>Grade</th><th>How to get it</th></tr></thead>
-  <tbody id="rows"></tbody>
-</table>
+
+<nav class="view-tabs" aria-label="Views">
+  <button id="tab-checklist" type="button" class="view-tab active">Checklist &amp; Guide</button>
+  <button id="tab-roadmap" type="button" class="view-tab">Roadmap to Platinum</button>
+</nav>
+
+<section id="checklist-view">
+  <div class="toolbar">
+    <div id="filter-chips" class="chips" role="group" aria-label="Filter by kind">
+      <button type="button" class="chip active" data-filter="all">All 55</button>
+      <button type="button" class="chip" data-filter="story">Story</button>
+      <button type="button" class="chip" data-filter="missable">Missable</button>
+      <button type="button" class="chip" data-filter="collectibles">Collectibles</button>
+      <button type="button" class="chip" data-filter="activities">Activities</button>
+      <button type="button" class="chip" data-filter="online">Online</button>
+    </div>
+    <div class="toolbar-actions">
+      <input id="search" type="search" placeholder="Search trophies…" aria-label="Search trophies">
+      <label class="toggle"><input id="spoiler-toggle" type="checkbox"> Spoiler protection</label>
+      <button id="export-btn" type="button">Export progress</button>
+      <label class="import-btn">Import progress <input id="import-file" type="file" accept="application/json"></label>
+    </div>
+  </div>
+  <p id="filter-note" class="filter-note"></p>
+  <div class="layout">
+    <ol id="trophy-list" class="trophy-list"></ol>
+    <aside id="guide-panel" class="guide-panel" aria-live="polite"></aside>
+  </div>
+</section>
+
+<section id="roadmap-view" hidden>
+  <div id="roadmap"></div>
+</section>
+
+<footer class="colophon">
+  <p><strong>Sources.</strong> Trophy names, descriptions and grades are the official PlayStation list, as listed by Exophase and PSNProfiles. Tracked counts (42 Shooting Range challenges, 52 areas of Leonida, and the rest) are the counts PlayStation tracks for each trophy, as carried in the official list data. Guide text, the roadmap order and the missable flags are this guide's own work, reasoned from those official descriptions; advice is labelled as advice, and where a description states no step, the guide says so instead of inventing one.</p>
+  <p><strong>Online trophies:</strong> the official list contains none, so the Online filter is empty by design. Progress is saved in this browser (localStorage) and can be exported and imported above. This app works fully offline and loads nothing over the network.</p>
+</footer>
+
 <script type="module" src="app.js"></script>
 </body>
 </html>
